@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React StartUp</title>
+    <style>
+        .demo {
+            color: green;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="./react.development.js"></script>
+    <script src="./react-dom.development.js"></script>
+    <script src="./babel.min.js"></script>
+    <script type="text/babel">
+        const items = [{
+            title: "Apple", id: 1, type: 'fruit'
+        },{
+            title: "Lettuce", id: 2, type: 'vegetable'
+        },{
+            title: "Banana", id: 3, type: 'fruit'
+        }];
+        
+        function MyFunction({state, setState}){
+            const listItems = items.map((value, index) => {
+                return <li 
+                key={value.id}
+                style={{color: value.type === 'fruit' ? 'red' : 'green'}}
+                onClick={() => {setState(state+1)}}
+                >{value.title}</li>
+            });
+
+            return (
+                <div>
+                    <ul>
+                        {listItems}
+                    </ul>
+                </div>)
+        }
+
+        function MyApp(){
+            const [state, setState] = React.useState(0);
+            return(
+                <div>
+                    <p>{state}</p>
+                    <MyFunction state={state} setState={setState} />
+                    <MyFunction state={state} setState={setState} />
+                </div>
+            )
+        }
+        //获取一个页面根节点
+        const rootNode = document.getElementById('root');
+        //创建一个React根实例
+        const root = ReactDOM.createRoot(rootNode);
+        //使用根实例渲染一个组件
+        root.render(React.createElement(MyApp));
+    </script>
+</body>
+</html>
