@@ -1,13 +1,21 @@
 import Square from "./Square";
-import { useState } from "react";
 
-function Board(){
-    const [state, setState] = useState(Array(9).fill(null));
+
+function getNextLetter(state){
+    const filterSquare = state.filter((value)=> value === 'X' || value === 'O');
+    const filterNumb = filterSquare.length;
+    const letterFill = (filterNumb % 2 === 0) ? 'X' : 'O';
+    return letterFill;
+}
+
+function Board({state, setState, winner}){
+    const letterFill = getNextLetter(state);
+    let status = letterFill;
+
+    status = (winner) ? `${winner} is the winner!` : `${status} goes next`;
+
     const onClick = (index) => {
-        if(!state[index]){
-            const filterSquare = state.filter((value)=> value === 'X' || value === 'O');
-            const filterNumb = filterSquare.length;
-            const letterFill = (filterNumb % 2 === 0) ? 'X' : 'O';
+        if(!state[index] && !winner){
             const newState = state.slice();
             newState[index] = letterFill;
             setState(newState);
@@ -15,6 +23,9 @@ function Board(){
     }
     return (
         <>
+        <div className="status">
+            {status}
+        </div>
         <div className='board-row'></div>
             <Square value={state[0]} index={0} onClick={onClick} />
             <Square value={state[1]} index={1} onClick={onClick} />
