@@ -1,0 +1,45 @@
+.guide-page {
+    opacity: 0;
+    transition: all 1.5s;
+    
+    .main-photo {
+        display: block;
+        width: .86rem;
+        height: .70rem;
+        padding: .93rem 0 .29rem 0;
+        margin: 0 auto;
+    }
+
+    .title {
+        color: #242424;
+        font-family: "DM Serif Display", serif;
+        font-style: normal;
+        line-height: .23rem;
+        font-size: .2rem;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+
+    .sub-pic {
+        display: block;
+        width: 2.02rem;
+        height: 1.08rem;
+        margin: 1.73rem auto 1.76rem auto;
+    }
+
+    .arrow-icon {
+        color: #73D13D;
+        font-size: .16rem;
+        font-weight: bold;
+    }
+
+    .arrow-pos {
+        position: absolute;
+        left: 0;
+        right: 0    ;
+        bottom: .73rem;
+        text-align: center;
+        line-height: .16rem;
+    }
+
+}
