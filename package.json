@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "normalize.css": "^8.0.1",
+    "swiper": "^11.1.6",
     "use-immer": "^0.10.0"
   }
 }

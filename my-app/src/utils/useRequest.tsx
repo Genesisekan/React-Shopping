@@ -1,8 +1,10 @@
-import axios, { AxiosRequestConfig, Method } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
-function useRequest<T>(url: string, method: Method, payload: AxiosRequestConfig){
+function useRequest<T>(options: AxiosRequestConfig = {}){
+    const navigator = useNavigate();
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState('');
     const [loaded, setLoaded] = useState(false);
@@ -12,19 +14,31 @@ function useRequest<T>(url: string, method: Method, payload: AxiosRequestConfig)
         controllerRef.current.abort();
     }
 
-    const request = () => {
+    const request = (requestOptions?: AxiosRequestConfig) => {
         setData(null);
         setError('');
         setLoaded(false);
 
+        const tokens = localStorage.getItem('token');
+        const headers = (tokens) ? {
+            token : tokens,
+        } : {};
+
         return axios.request<T>({
-                url,
-                method,
-                data: payload
+                url: requestOptions?.url || options.url,
+                method: requestOptions?.method || options.method,
+                signal: controllerRef.current.signal,
+                data: requestOptions?.data ||  options.data,
+                params: requestOptions?.params || options.params,
+                headers,
             }).then(response => {
                 setData(response.data);
                 return response.data;
             }).catch((e: any) =>{
+                if(e?.response?.status === 403) {
+                    localStorage.removeItem('token');
+                    navigator('/account/login');
+                }
                 setError(e.message || 'unknown request error.');
                 throw new Error(e);
             }).finally(()=>{

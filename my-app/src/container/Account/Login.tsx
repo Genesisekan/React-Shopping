@@ -1,48 +1,65 @@
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import './style.scss'
 import useRequest from '../../utils/useRequest';
-import Model from '../../components/Model';
+import Model, {ModelInterfaceType} from '../../components/Model';
+import { useNavigate } from 'react-router-dom';
 
 type ResponseType = {
-    name: string;
+    success: boolean;
+    data: {
+        token: string;
+    }
 }
 
 const Login = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showModel, setShowModel] = useState(false);
-    const [message, setMessage] = useState('');
+    const modelRef = useRef<ModelInterfaceType>(null!);
 
-    const {request} = useRequest<ResponseType>('./a.json', 'GET', {});
 
+    const {request} = useRequest<ResponseType>();
+
+    const navigator = useNavigate();
+    // const signupClickHandler = useCallback(() => {
+    //     navigator('/register')
+    // }, [navigator])
+
+    //handling log in click button
     function submitHandler(){
-        request().then((response) => {
+        if(!email){
+            modelRef.current.showMessage('Email is required');
+            return;
+        }
+        if(!password){
+            modelRef.current.showMessage('Password is required!');
+            return;
+        }
+    
+        request({
+            url: '/login.json',
+            method: 'GET',
+            params: {
+                name: 'savannah'
+            }}).then((response) => {
             if(response){
-                console.log(response.name);
+                const {data: {token} } = response
+                if(token){
+                    localStorage.setItem('token', token);
+                    navigator('/home'); 
+                }
+
             }
         }).catch((e) => {
-            setShowModel(true);
-            setMessage(e.message);
+            modelRef.current.showMessage(e?.message || 'Unknown error');
+            // setShowModel(true);
+            // setMessage(e.message);
         })
     }
 
-    useEffect(() => {
-        if(showModel){
-            const timer = setTimeout(() => {
-                setShowModel(false);
-            }, 1500);
-            return () => {
-                clearTimeout(timer);
-            };
-        }
-    }, [showModel]);
+
 
     return(
-        <div className="page login-page">
-            <div className="tab">
-                <div className="tab-item tab-item-left">SignIn</div>
-                <div className="tab-item tab-item-right">SignUp</div>
-            </div>
+        <>
             <div className="form">
                 <div className="form-item">
                     <div className="form-item-title">Email</div>
@@ -68,8 +85,8 @@ const Login = () =>{
             <p className="term">
                 *By logging in you agree to Terms and Privacy Policy.
             </p>
-            {showModel ? <Model>{message}</Model> : null}
-        </div>
+            <Model ref={modelRef} />
+        </>
     )
 }
 

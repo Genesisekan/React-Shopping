@@ -15,7 +15,11 @@ const Guide = () => {
     //Handling page navigation logic
     const navigator = useNavigate();
     const clickIconHandler = useCallback(()=>{
-    navigator('/login');
+        if(localStorage.getItem('token')){
+            navigator('/home');
+        }else{
+            navigator('/account/login')
+        }
     },[navigator]);
 
 

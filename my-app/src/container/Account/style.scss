@@ -1,4 +1,4 @@
-.login-page 
+.account-page 
 {
  
     .tab{
@@ -8,16 +8,21 @@
         padding: .5rem 0 .77rem 0;
         font-size: .18rem;
         color: #242424;
-    }
-    
-    .tab-item{
-        display: inline-block;
-        font-weight: bold;
-        &-left {
-            color: #73D13D;
-        }
-        &-right {
-            float: right;
+        &-item{
+            display: inline-block;
+            font-weight: bold;
+            &-right {
+                float: right;
+            }
+            a {
+                color: #242424;
+                text-decoration: none;
+            }
+            &-active {
+                a {
+                    color: #73D13D;
+                }
+            }
         }
     }
     
@@ -47,14 +52,14 @@
     .submit {
         margin: 0 .3rem .94rem .3rem;
         line-height: .5rem;
-        border-radius: 25px;
+        border-radius: .25rem;
         background: #73D13D;
-        box-shadow: 0px 6px 6px 0px #D9F7BE;
+        box-shadow: 0rem 0.06rem .06rem 0rem #D9F7BE;
         font-size: .16rem;
         color: #FFF;
         text-align: center;
     }
-    
+
     .term {
         color: #CF1322;
         font-size: .16rem;
