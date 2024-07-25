@@ -1,9 +1,19 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { message } from "../utils/message";
 
 
-function useRequest<T>(options: AxiosRequestConfig = {}){
+const defaultRequestConfig = {
+    url: '/',
+    method: 'GET',
+    data: {},
+    params: {},
+}
+
+
+
+function useRequest<T>(options: AxiosRequestConfig & {manual?: boolean } = defaultRequestConfig){
     const navigator = useNavigate();
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState('');
@@ -14,7 +24,7 @@ function useRequest<T>(options: AxiosRequestConfig = {}){
         controllerRef.current.abort();
     }
 
-    const request = (requestOptions?: AxiosRequestConfig) => {
+    const request = useCallback((requestOptions: AxiosRequestConfig) => {
         setData(null);
         setError('');
         setLoaded(false);
@@ -25,11 +35,11 @@ function useRequest<T>(options: AxiosRequestConfig = {}){
         } : {};
 
         return axios.request<T>({
-                url: requestOptions?.url || options.url,
-                method: requestOptions?.method || options.method,
+                url: requestOptions?.url,
+                method: requestOptions?.method,
                 signal: controllerRef.current.signal,
-                data: requestOptions?.data ||  options.data,
-                params: requestOptions?.params || options.params,
+                data: requestOptions?.data,
+                params: requestOptions?.params,
                 headers,
             }).then(response => {
                 setData(response.data);
@@ -44,7 +54,15 @@ function useRequest<T>(options: AxiosRequestConfig = {}){
             }).finally(()=>{
                 setLoaded(true);
             });
-    }
+    },[navigator]);
+
+    useEffect(()=>{
+        if(!options.manual){
+            request(options).catch((error)=>{
+                message(error.message);
+            });    
+        }
+    },[options, request]);
 
     return {data, error, loaded, request, cancle};
 

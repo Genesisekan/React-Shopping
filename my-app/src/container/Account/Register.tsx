@@ -1,59 +1,58 @@
-import { useRef, useState } from 'react';
 import './style.scss'
-import useRequest from '../../utils/useRequest';
-import Model, {ModelInterfaceType} from '../../components/Model';
+import type { LoginResponseType } from './types';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useRequest from '../../hooks/useRequest';
 
-type ResponseType = {
-    success: boolean;
-    data: boolean;
-}
+import { message } from '../../utils/message';
+
 
 const Register = () =>{
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const modelRef = useRef<ModelInterfaceType>(null!);
+    const navigator = useNavigate();
 
 
-    const {request} = useRequest<ResponseType>({
-        url: '/register.json',
-        method: 'POST',
-        params: {
-            username: username,
-            email: email,
-            password: password,
-        }
-    });
+    const {request} = useRequest<LoginResponseType>({manual: true});
 
     function submitHandler(){
         if(!username){
-            modelRef.current.showMessage('Username is required');
+            message('Username is required', 1500);
             return;
         }
         if(!email){
-            modelRef.current.showMessage('Email is required');
+            message('Email is required', 1500);
             return;
         }
         if(!password){
-            modelRef.current.showMessage('Password is required!');
+            message('Password is required!', 1500);
             return;
         }
         if(password.length < 6){
-            modelRef.current.showMessage('Password length must be at least 6 characters long');
+            message('Password length must be at least 6 characters long', 1500);
             return;
         }
         if(confirmPassword !== password){
-            modelRef.current.showMessage('passwords do not match');
+            message('passwords do not match', 1500);
             return;
         }
     
-        request().then((response) => {
-            if(response){
-                console.log(response);
+        request({
+            url: '/register.json',
+            method: 'POST',
+            params: {
+                username: username,
+                email: email,
+                password: password,
+            }
+        }).then((response) => {
+            if(response?.success){
+                navigator('/account/login');
             }
         }).catch((e) => {
-            modelRef.current.showMessage(e?.message || 'Unknown error');
+            message(e?.message || 'Unknown error', 1500);
             // setShowModel(true);
             // setMessage(e.message);
         })
@@ -103,7 +102,6 @@ const Register = () =>{
             <div className="submit" onClick={submitHandler}>
                 Register
             </div>
-            <Model ref={modelRef} />
         </>
     )
 }

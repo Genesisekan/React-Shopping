@@ -1,5 +1,7 @@
 .home-page {
+  background: #F5F9FA;
     .banner {
+      position: relative;
       height: 2.3rem;
       background: #73D13D;
       .location {
@@ -28,12 +30,12 @@
         }
       }
       .swiper-area{
-        position: relative;
         .swiper-item {
           &-image {
             margin-left: .18rem;
             width: 3.4rem;
             height: .9rem;
+            border-radius: .1rem;
           }
         }
         .pagination {
@@ -41,7 +43,7 @@
           z-index: 999;
           left: 50%;
           transform: translateX(-50%);
-          bottom: .26rem;
+          bottom: .36rem;
           color: #FFFFFF;
           font-size: .12rem;
           line-height: .2rem;
@@ -52,5 +54,31 @@
         }
       }
   
+    }
+    .category {
+      position: relative;
+      margin-top: -.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: .14rem;
+      padding-bottom: .2rem;
+      background: #fff;
+      border-radius: .2rem .2rem 0 0;
+      &-item {
+        flex: 0 0 25%;
+        text-align: center;
+        &-image {
+          margin-top: .16rem;
+          margin-bottom: .05rem;
+          width: .42rem;
+          height: .36rem;
+        }
+        &-desc {
+          color: #242424;
+          line-height: .18rem;
+          letter-spacing: 0;
+          text-align: center;
+        }
+      }
     }
   }

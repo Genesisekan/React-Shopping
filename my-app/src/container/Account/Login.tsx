@@ -1,37 +1,29 @@
-import { useRef, useState } from 'react';
 import './style.scss'
-import useRequest from '../../utils/useRequest';
-import Model, {ModelInterfaceType} from '../../components/Model';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-type ResponseType = {
-    success: boolean;
-    data: {
-        token: string;
-    }
-}
+import type { LoginResponseType } from './types';
+import useRequest from '../../hooks/useRequest';
+import { message } from '../../utils/message';
+
+
 
 const Login = () =>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const modelRef = useRef<ModelInterfaceType>(null!);
 
 
-    const {request} = useRequest<ResponseType>();
-
+    const {request} = useRequest<LoginResponseType>({manual: true});
     const navigator = useNavigate();
-    // const signupClickHandler = useCallback(() => {
-    //     navigator('/register')
-    // }, [navigator])
 
     //handling log in click button
     function submitHandler(){
         if(!email){
-            modelRef.current.showMessage('Email is required');
+            message('Email is required', 1500);
             return;
         }
         if(!password){
-            modelRef.current.showMessage('Password is required!');
+            message('Password is required!', 1500);
             return;
         }
     
@@ -50,7 +42,7 @@ const Login = () =>{
 
             }
         }).catch((e) => {
-            modelRef.current.showMessage(e?.message || 'Unknown error');
+            message(e?.message || 'Unknown error', 1500);
             // setShowModel(true);
             // setMessage(e.message);
         })
@@ -85,7 +77,6 @@ const Login = () =>{
             <p className="term">
                 *By logging in you agree to Terms and Privacy Policy.
             </p>
-            <Model ref={modelRef} />
         </>
     )
 }
