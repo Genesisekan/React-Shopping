@@ -1,5 +1,7 @@
 .home-page {
   background: #F5F9FA;
+  overflow-y: scroll;
+  padding-bottom: .5rem;
     .banner {
       position: relative;
       height: 2.3rem;
@@ -58,6 +60,7 @@
     .category {
       position: relative;
       margin-top: -.2rem;
+      height: 1.57rem;
       display: flex;
       flex-wrap: wrap;
       font-size: .14rem;
@@ -76,9 +79,113 @@
         &-desc {
           color: #242424;
           line-height: .18rem;
-          letter-spacing: 0;
           text-align: center;
         }
       }
+    }
+    .card {
+      margin-top: .1rem;
+      background: #FFF;
+      font-size: .12rem;
+      height: 2.46rem;
+      &-title {
+        position: relative;
+        padding: .14rem .1rem 0 .1rem;
+        color: #242424;
+        font-size: .2rem;
+        line-height: .24rem;
+        &-image {
+          float: left;
+          width: 24px;
+        }
+        &-more {
+          font-size: .16rem;
+          line-height: .18rem;
+          position: absolute;
+          bottom: 0;
+          right: 0.1rem;
+          font-weight: normal;
+          .iconfont {
+            margin-left: .06rem;
+          }
+        }
+      }
+      &-content {
+        overflow-x: scroll;
+        white-space: nowrap;
+        // height: 1.82rem;
+        margin-top: .2rem;
+        padding-bottom: .14rem;
+        &-item {
+          margin-right: .06rem;
+          display: inline-block;
+          width: 1.1rem;
+          &-img {
+            width: 1.1rem;
+            height: 1.1rem;
+          }
+          &-desc {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+
+            margin: 0 .06rem;
+            color: #242424;
+            font-size: .12rem;
+            line-height: .18rem;
+            white-space: normal;
+            word-break: break-all
+          }
+          &-price {
+            position: relative;
+            color: #F81C00;
+            font-size: .2rem;
+            line-height: .24rem;
+            .iconfont {
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              right: .06rem;
+              color: #73D13D;
+            }
+          }
+          &-dollar {
+            font-size: .16rem;
+          }
+        }
+      }
+    }
+    .docker {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      height: .49rem;
+      display: flex;
+      border-top: .01rem solid #F5F9FA;
+      padding-bottom: .05rem;
+      font-size: .12rem;
+      color: #B3C1C4;
+      background-color: #FFF;
+      text-align: center;
+      &-item {
+        flex: 1;
+        &-icon {
+          margin: .1rem 0 .04rem 0;
+          font-size: .18rem;
+        }
+      }
+      &-item-active {
+        color: #73D13D;
+      }
+    }
+    .bottom {
+      line-height: 1rem;
+      color: #B3C1C4; 
+      font-size: .12rem;
+      text-align: center;
     }
   }

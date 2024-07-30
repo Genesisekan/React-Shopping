@@ -8,6 +8,8 @@ import Login from './container/Account/Login';
 import Register from './container/Account/Register';
 import Account from './container/Account';
 import Home from './container/Home';
+import Nearby from './container/Nearby';
+import Search from './container/Search';
 
 const router = createHashRouter([
   {
@@ -30,6 +32,12 @@ const router = createHashRouter([
   },{
     path: "home",
     element: <Home />
+  },{
+    path: "nearby",
+    element: <Nearby />
+  },{
+    path: "search",
+    element: <Search />
   }
 ]);
 

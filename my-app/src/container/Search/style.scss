@@ -1,0 +1,16 @@
+.search-page {
+    font-size: .14rem;
+    .search {
+        display: flex;
+        padding: .08rem 0;
+        &-back {
+            line-height: .32rem;
+            width: .48rem;
+            font-size: .18rem;
+            text-align: center;
+        }
+        &-area {
+            flex: 1;
+        }
+    }
+}
