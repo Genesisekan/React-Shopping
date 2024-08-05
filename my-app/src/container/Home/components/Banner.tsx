@@ -17,6 +17,12 @@ const Banner = (props: {location: LocationType | undefined, banners: BannersType
         navigator('/nearby');
     }
 
+    function handleSearchClick() {
+        if(location) {
+            navigator(`/search/${location.id}`);
+        }
+    }
+
     return (
         <div className='banner'>
             <h3 className='location' onClick={handleClick}>
@@ -25,7 +31,7 @@ const Banner = (props: {location: LocationType | undefined, banners: BannersType
                 </span>
                 {location?.address || '' }
             </h3>
-            <div className='search'>
+            <div className='search' onClick={handleSearchClick}>
                 <span className='iconfont'>
                     <i className='pi pi-search'></i>
                 </span>

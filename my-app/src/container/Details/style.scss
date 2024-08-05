@@ -1,0 +1,169 @@
+.details-page {
+    overflow-y: scroll;
+    background: #F5F9FA;
+    padding-bottom: .78rem;
+    .title {
+        position: relative;
+        line-height: .44rem;
+        font-size: .18rem;
+        color: #242424;
+        background: #FFF;
+        text-align: center;
+        .search-back {
+            position: absolute;
+            left: 0.1rem;
+            top: 0.12rem;
+        }
+    }
+    .image {
+        display: block;
+        width: 100vw;
+        height: 100vw;
+    }   
+    .main {
+        margin: .17rem .1rem 0 .1rem;
+        position: relative;
+        padding-top: .74rem;
+        font-size: .18rem;
+        background: #52C41A;
+        border-radius: .15rem;
+        &-price {
+            position: absolute;
+            color: #FFF; 
+            font-size: .22rem;
+            top: .18rem;
+            left: .08rem;
+            font-weight: bold;
+            &-dollar {
+                font-size: .14rem;
+                margin-right: .02rem;
+            }
+        }
+
+        &-sales {
+            position: absolute;
+            color: #FFF; 
+            font-size: .18rem;
+            top: .2rem;
+            right: .1rem;
+        }
+
+        &-content {
+            padding: .15rem .1rem .1rem .1rem;
+            background: #FFF;
+            border-radius: .15rem;
+            margin-top: -.15rem;
+            &-title {
+                color: #242424;
+                font-size: .2rem;
+                line-height: .24rem;
+            }
+            &-subtitle {
+                margin-top: .04rem;
+                color: #C9CDD4;
+                font-size: .14rem;
+                line-height: .2rem;
+            }
+        }
+    }
+
+    .spec {
+        margin: .1rem .08rem 0 .08rem;
+        border-radius: .15rem;
+        background: #FFF;
+        &-title {
+            margin-left: .1rem;
+            color: #242424;
+            font-size: .16rem;
+            line-height: .4rem;
+            font-weight: bold;
+        }
+        &-content {
+            display: flex;
+            margin: 0 .12rem .12rem .12rem;
+            padding-bottom: .12rem;
+            &-left {
+                padding: .05rem .05rem;
+                width: .62rem;
+                background-color: #F2F3F5;
+                text-align: center;
+                border: .01rem solid #D7D7D7;
+                border-radius: .05rem 0 0 .05rem;
+            }
+            &-right {
+                position: relative;
+                padding-left: .1rem;
+                flex: 1;
+                border-top: .01rem solid #D7D7D7;
+                border-right: .01rem solid #D7D7D7;
+                border-bottom: .01rem solid #D7D7D7;
+                border-radius: 0 .05rem .05rem 0;
+            }
+            &-item {
+                color: #242424;
+                font-size: .14rem;
+                line-height: .2rem;
+            }
+            &-item1 {
+                position: absolute;
+                top: .12rem
+            }
+            &-item2 {
+                position: absolute;
+                bottom: .05rem;
+            }
+        }
+    }
+
+    .details {
+        margin: .1rem .08rem 0 .08rem;
+        border-radius: .15rem;
+        background: #FFF;
+        &-title {
+            margin-left: .1rem;
+            color: #242424;
+            font-size: .16rem;
+            line-height: .4rem;
+            font-weight: bold;
+        }
+        &-content {
+            padding: .13rem;
+            color: #242424;
+            font-size: .16rem;
+            line-height: .2rem;
+            
+        }
+    }
+    
+    .docker {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: .64rem;
+        background: #FFF;
+        border-top:  .01rem solid #F5F9FA;
+        &-cart {
+            width: 1.2rem;
+            text-align: center;
+            font-size: .14rem;
+            .iconfont {
+                margin-top: .1rem;
+                font-size: .22rem;
+            }
+        }
+        .cart-button {
+            flex: 1;
+            margin-top: .1rem;
+            margin-right: .16rem;
+            height: .44rem;
+            line-height: .44rem;
+            font-size: .16rem;
+            background-color: #73D13D;
+            border-radius: .22rem;
+            text-align: center;
+            color: #FFF;
+        }
+    }
+}

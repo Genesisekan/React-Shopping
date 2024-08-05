@@ -1,0 +1,112 @@
+.search-list-page {
+    font-size: .14rem;
+    background-color: #f5f9fa;
+    overflow-y: scroll;
+    a {
+        text-decoration: none;
+    }
+    .search {
+        display: flex;
+        padding: .08rem .32rem .06rem 0;
+        background: #FFF;
+        &-back {
+            line-height: .32rem;
+            width: .48rem;
+            font-size: .18rem;
+            text-align: center;
+            color: #242424;
+        }
+        &-area {
+            display: flex;
+            position: relative;
+            flex: 1;
+            background-color: #f5f9fa;
+            border-radius: .16rem;
+            .search-icon {
+                 width: .3rem;
+                 padding-top: .095rem;
+                 text-align: center;
+                 color: #75818f;
+            }
+            .search-input {
+                flex: 1;
+                padding-right: .1rem;
+                background: none;
+                outline: none;
+                border: none;
+                color: #242424;
+            }
+            .search-clear {
+                position: absolute;
+                font-size: .18rem;
+                color: #75818f;
+                right: .1rem;
+                top: .07rem;
+            }
+        }
+    }
+    .tab {
+        display: flex;
+        background: #FFF;
+        &-item {
+            flex: 1;
+            line-height: .4rem;
+            text-align: center;
+            color: #b1b1b1;
+            font-size: .14rem;
+        }
+        &-item-active {
+            color: #242424;
+        }
+    }
+    .list {
+        padding: 0.1rem;
+        &-item {
+            display: flex;
+            margin-top: .1rem;
+            padding: .1rem;
+            background: #fff;
+            &-img {
+                width: 1.08rem;
+                height: 1.08rem;
+                margin-right: .1rem;
+            }
+            &-content {
+                position: relative;
+                flex: 1;
+            }
+            &-title {
+                color:#242424;
+                font-size: .14rem;
+                line-height: .22rem;
+            }
+            &-price {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                color: #F81C00;
+                font-size: .16rem;
+                line-height: .24rem;
+                &-dollar {
+                    font-size: .1rem;
+                    margin-left: .04rem;
+                }
+            }
+            &-sales {
+                position: absolute;
+                right: 0;
+                bottom: 0.03rem;
+                color: #b1b1b1;
+                font-size: .12rem;
+                line-height: .16rem;
+            }
+        }
+    }
+    .bottom {
+        line-height: 1rem;
+        color: #B3C1C4; 
+        background-color: #f5f9fa;
+        font-size: .12rem;
+        text-align: center;
+    }
+}
