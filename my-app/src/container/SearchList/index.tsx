@@ -89,8 +89,8 @@ const SearchList = () => {
             {
                 result.map((item => {
                     return(
-                        <Link to={`/details/${item.id}`}>
-                            <div className='list-item' key={item.id}>
+                        <Link to={`/details/${item.id}`} key={item.id}> 
+                            <div className='list-item'>
                                 <img className='list-item-img' alt={item.title} src={item.imgUrl} ></img>
                                 <div className='list-item-content'>
                                     <p className='list-item-title'>{item.title}</p>

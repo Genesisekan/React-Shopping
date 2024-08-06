@@ -2,8 +2,8 @@ import './style.scss'
 import 'swiper/css'
 import 'primeicons/primeicons.css';
 import type { ResponseType } from './types';
-
 import { useEffect, useState } from 'react';
+import Docker from '../../Components/Docker';
 import useRequest from '../../hooks/useRequest';
 import { message } from '../../utils/message';
 import Banner from './components/Banner';
@@ -74,24 +74,7 @@ const Home = () => {
             <div className='bottom'>
                 -End of Page-
             </div>
-            <div className='docker'>
-                <div className='docker-item docker-item-active'>
-                    <i className='pi pi-home iconfont docker-item-icon'></i>
-                    <p className='docker-item-title'>Home</p>
-                </div>
-                <div className='docker-item'>
-                    <i className='pi pi-th-large iconfont docker-item-icon'></i>
-                    <p className='docker-item-title'>Categories</p>
-                </div>
-                <div className='docker-item'>
-                    <i className='pi pi-shopping-cart iconfont docker-item-icon'></i>
-                    <p className='docker-item-title'>Cart</p>
-                </div>
-                <div className='docker-item'>
-                    <i className='pi pi-user iconfont docker-item-icon'></i>
-                    <p className='docker-item-title'>Me</p>
-                </div>
-            </div>
+            <Docker activeName='Home' />
         </div>
     </>
     )
