@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { FreshesType } from "../types"
 
 const Card = (props: {title: string, freshes: FreshesType | undefined}) => {
     const {title, freshes} = props;
+    const navigator = useNavigate();
+
+    function handleItemClick(itemId: string){
+        navigator(`/details/${itemId}`);
+    }
     return(
         <div className='card'>
             <h3 className='card-title'>
@@ -20,7 +26,10 @@ const Card = (props: {title: string, freshes: FreshesType | undefined}) => {
             {
                 (freshes || []).map((item) => {
                     return(
-                        <div key={item.id} className='card-content-item'>
+                        <div 
+                        key={item.id} 
+                        className='card-content-item'
+                        onClick={() => handleItemClick(item.id)}>
                             <img 
                             alt={item.name}
                             className='card-content-item-img'

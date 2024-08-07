@@ -5,7 +5,6 @@ import { useState } from 'react';
 import useRequest from '../../hooks/useRequest';
 
 const SearchList = () => {
-    
 
     const params = useParams<{shopId: string, keyword: string}>();
     const [ keyword , setKeyword ] = useState(params.keyword);

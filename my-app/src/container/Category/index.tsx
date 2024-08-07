@@ -1,12 +1,16 @@
 import './style.scss'
 import { useEffect, useState } from 'react';
-import Docker from '../../Components/Docker';
-import type { CategoriesTagsResponseType, ProductsType, ProductsResponseType } from './types';
-import useRequest from '../../hooks/useRequest';
 import { message } from '../../utils/message';
+import Docker from '../../Components/Docker';
+import { type CategoriesTagsResponseType, type ProductsType, type ProductsResponseType, type CartType, CartResponseType } from './types';
+import useRequest from '../../hooks/useRequest';
+import Popover from '../../Components/Popover';
+import { CartChangeResponseType } from '../../types';
+import { useNavigate } from 'react-router-dom';
+
 
 const Category = () => {
-
+    const navigator = useNavigate();
     //Storage of List Item Data
     const [ categories, setCategories ] = useState<Array<{id:string; name: string}>>([]);
     const [ tags, setTags ] = useState<Array<string>>([]);
@@ -16,11 +20,21 @@ const Category = () => {
     const [ keyword, setKeyword ] = useState('');
     const [ currentCategory, setCurrentCategory ] = useState('');
     const [ currentTags, setCurrentTags ] = useState('');
+    const [ showCart, setShowCart ] = useState(false);
+    const [ cartProductInfo, setCartProductInfo ] = useState<CartType>({
+        id: '',
+        title: '',
+        imgUrl: '',
+        price: '',
+        count: 0
+    })
 
     //Sending request dynamically according to request
     const { request: CategoriesTagRequest } = useRequest<CategoriesTagsResponseType>({manual: true});
     const { request: ProductsRequest } = useRequest<ProductsResponseType>({manual: true});
-
+    const { request: CartRequest } = useRequest<CartResponseType>({manual: true});
+    const { request: changeCartRequest } = useRequest<CartChangeResponseType>({manual: true});
+    
     useEffect(() => {
         ProductsRequest({
             url: '/category-search-list.json',
@@ -66,6 +80,54 @@ const Category = () => {
             console.log(target);
             setKeyword(target.value);
         }
+    }
+
+    function handleItemClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>, productId: string){
+        e.stopPropagation();
+        CartRequest({
+            url: '/cart-product-info.json',
+            method: 'GET',
+            params: {
+                productId
+            }
+        }).then((response) => {
+            if(response?.success){
+                setCartProductInfo(response.data);
+                setShowCart(true);
+            }
+        }).catch((e) => {
+            message(e?.message || 'Unknown error', 1500);
+        })
+    }
+
+    function handleCartCanceling(){
+        setShowCart(false);
+    }
+
+    function handleCartItemChange(methods: string){
+        const newCartProduct = { ...cartProductInfo};
+        const { count } = newCartProduct;
+        if(methods === 'minus'){
+            newCartProduct.count = (count - 1) === 0 ? 0 : (count - 1);
+        }else {
+            newCartProduct.count = count + 1;
+        }
+        setCartProductInfo(newCartProduct);
+    }
+
+    function changeCartInfo() {
+        changeCartRequest({
+            url: '/cart-change.json',
+            method: 'GET',
+            params: {
+               id: cartProductInfo.id,
+               count: cartProductInfo.count
+           }
+        }).then((response)=>{
+            setShowCart(false);
+        }).catch((e)=>{
+            message(e.message, 1500);
+        })
     }
 
     return (
@@ -122,7 +184,10 @@ const Category = () => {
         {
             products.map((item)=>{
                 return(
-                <div className='products-item' key={item.id}>
+                <div 
+                className='products-item' 
+                key={item.id}
+                onClick={()=>navigator(`/details/${item.id}`)}>
                     <img className='products-item-image' src={item.imgUrl} alt={item.title} />
                     <div className='products-item-content'>
                         <div className='products-item-title'>
@@ -135,7 +200,9 @@ const Category = () => {
                             <i className='pi pi-dollar'></i>
                             {item.price}
                         </div>
-                        <div className='products-item-button'>
+                        <div 
+                        className='products-item-button'
+                        onClick={(e) => handleItemClick(e,item.id)}>
                             Buy
                         </div>
                     </div>
@@ -145,6 +212,34 @@ const Category = () => {
     
        </div>
        <Docker activeName='Categories' />
+       <Popover show={showCart} blankClickCallBack={handleCartCanceling}>
+                <div className='cart'>
+                    <div className='cart-content'>
+                        <img src={cartProductInfo.imgUrl} alt={cartProductInfo.title} className='cart-content-image' />
+                        <div className='cart-content-info'>
+                            <div className='cart-content-title'>{cartProductInfo.title}</div>
+                            <div className='cart-content-price'>
+                                <i className='pi pi-dollar cart-content-price-dollar'></i>
+                                {cartProductInfo.price}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='cart-count'>
+                        <div className='cart-count-content'>
+                            Amount
+                            <div className='cart-count-counter'>
+                                <div className='cart-count-button' onClick={()=>{handleCartItemChange('minus')}}>-</div>
+                                <div className='cart-count-text'>{cartProductInfo.count}</div>
+                                <div className='cart-count-button' onClick={()=>{handleCartItemChange('plus')}}>+</div>  
+                            </div>  
+                        </div>
+                    </div>
+                    <div className='cart-buttons'>
+                        <div className='cart-button cart-button-left' onClick={changeCartInfo}>Add to Cart</div>
+                        <div className='cart-button cart-button-right'>Buy Now</div>
+                    </div>
+                </div>
+            </Popover>
     </div>
     )
 }

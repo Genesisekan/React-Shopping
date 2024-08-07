@@ -13,6 +13,7 @@ import Search from './container/Search';
 import SearchList from './container/SearchList';
 import Details from './container/Details';
 import Category from './container/Category';
+import Cart from './container/Cart';
 
 const router = createHashRouter([
   {
@@ -50,7 +51,11 @@ const router = createHashRouter([
   }, {
     path: "category",
     element: <Category />
+  },{
+    path: "cart",
+    element: <Cart />
   }
+  
 ]);
 
 

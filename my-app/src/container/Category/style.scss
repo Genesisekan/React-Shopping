@@ -1,3 +1,9 @@
+@mixin line-clamp($lines) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+  }
 .category-page {
     .title {
         line-height: .44rem;
@@ -103,11 +109,8 @@
                 flex: 1;
             }
             &-title {
-                overflow: hidden;
                 text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
+                @include line-clamp(2);
     
                 color: #242424;
                 line-height: .22rem;
@@ -139,6 +142,91 @@
                 color: #FFF;
                 border-radius: .04rem;
                 font-size: .12rem;
+            }
+        }
+    }
+    .cart {
+        &-content {
+            padding: .2rem .2rem .34rem .2rem;
+            display: flex;
+            border-bottom: .01rem solid #F4F4F4;
+            &-image {
+                margin-right: .48rem;
+                display: block;
+                width: .7rem;
+                height: .7rem;
+            }
+            &-info {
+                font-size: .12rem;
+            }
+            &-title {
+                margin-right: .45rem;
+                color: #242424;
+                line-height: .18rem;
+                @include line-clamp(2);
+                text-overflow: ellipsis;
+                white-space: normal;
+                word-break: break-all;
+            }
+            &-price {
+                margin-top: .1rem;
+                color: #F81C00; 
+                font-size: .15rem;
+                &-dollar {
+                    font-size: .12rem;
+                    margin-right: .02rem;
+                }
+            }
+        }
+        &-count {
+            padding: .2rem .1em;
+            
+            &-content {
+                height: .28rem;
+                line-height: .28rem;
+                color: #242424;
+                font-size: .14rem;
+            }
+            &-counter {
+                float: right;
+                font-size: 0;
+            }
+            &-button, &-text {
+                display: inline-block;
+                font-size: .18rem;
+                line-height: .28rem;
+                text-align: center;
+                background: #F4F4F4;
+            }
+            &-button {
+                width: .28rem;
+            }
+            &-text {
+                margin: 0 .1rem;
+                padding: 0 .08rem;
+            }
+        }
+        &-buttons {
+            display: flex;
+            padding: .06rem 0 .1rem 0;
+        }
+
+        &-button {
+            flex: 1;
+            background: #73D13D;
+            font-size: .16rem;
+            line-height: .44rem;
+            text-align: center;
+            border-radius: .22rem;
+            color: #FFF;
+            &-left {
+                margin-left: .16rem;
+                margin-right: .12rem;
+                background: #95DE64;
+            }
+            &-left {
+                margin-left: .12rem;
+                margin-right: .16rem;
             }
         }
     }

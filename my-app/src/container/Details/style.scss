@@ -1,3 +1,10 @@
+@mixin line-clamp($lines) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+  }
+  
 .details-page {
     overflow-y: scroll;
     background: #F5F9FA;
@@ -149,9 +156,24 @@
             text-align: center;
             font-size: .14rem;
             .iconfont {
+                position: relative;
                 margin-top: .1rem;
                 font-size: .22rem;
             }
+            .icon-count {
+                position: absolute;
+                top: -.04rem;
+                right: -.1rem;
+                line-height: .16rem;
+                padding-bottom: .02rem;
+                text-align: center;
+                width: .2rem;
+                background: #73D13D;
+                font-size: .12rem;
+                color: #FFF;
+                border-radius: .1rem;
+            }
+        
         }
         .cart-button {
             flex: 1;
@@ -164,6 +186,78 @@
             border-radius: .22rem;
             text-align: center;
             color: #FFF;
+        }
+    }
+
+    .cart {
+        &-content {
+            padding: .2rem .2rem .34rem .2rem;
+            display: flex;
+            border-bottom: .01rem solid #F4F4F4;
+            &-image {
+                margin-right: .48rem;
+                display: block;
+                width: .7rem;
+                height: .7rem;
+            }
+            &-info {
+                font-size: .12rem;
+            }
+            &-title {
+                margin-right: .45rem;
+                color: #242424;
+                line-height: .18rem;
+                @include line-clamp(2);
+                text-overflow: ellipsis;
+                white-space: normal;
+                word-break: break-all;
+            }
+            &-price {
+                margin-top: .1rem;
+                color: #F81C00; 
+                font-size: .15rem;
+                &-dollar {
+                    font-size: .12rem;
+                    margin-right: .02rem;
+                }
+            }
+        } 
+        &-count {
+            padding: .2rem .1em;
+            
+            &-content {
+                height: .28rem;
+                line-height: .28rem;
+                color: #242424;
+                font-size: .14rem;
+            }
+            &-counter {
+                float: right;
+                font-size: 0;
+            }
+            &-button, &-text {
+                display: inline-block;
+                font-size: .18rem;
+                line-height: .28rem;
+                text-align: center;
+                background: #F4F4F4;
+            }
+            &-button {
+                width: .28rem;
+            }
+            &-text {
+                margin: 0 .1rem;
+                padding: 0 .08rem;
+            }
+        }
+        &-button {
+            line-height: .44rem;
+            margin: .1rem .16rem;
+            border-radius: .22rem;
+            background: #73D13D;
+            font-size: .16rem;
+            color: #FFF;
+            text-align: center;
         }
     }
 }
