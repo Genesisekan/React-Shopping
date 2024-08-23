@@ -1,0 +1,21 @@
+{
+    "sussess": true,
+    "data": [{
+      "id": "8839",
+      "name": "ACME Markets",
+      "openHours": "6AM-12PM",
+      "address": "440 State Route 440, Jersey City, NJ 07305",
+      "distance": "799m",
+      "latitude": "40.71079281448852",
+      "longitude": "-74.10184455975049"
+  
+    }, {
+      "id": "8840",
+      "name": "Lidl",
+      "openHours": "8AM-10PM",
+      "address": "20 Goldsborough Dr, Bayonne, NJ 07002",
+      "distance": "7.3km",
+      "latitude": "40.67094820017759",
+      "longitude": "-74.10694640003855"
+    }]
+  }

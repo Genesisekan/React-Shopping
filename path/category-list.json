@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "category": [{
+      "id": "1321",
+      "name": "Hot Topics"
+    },{
+      "id": "1322",
+      "name": "Deals Today"
+    },{
+      "id": "1323",
+      "name": "Fresh Fruits"
+    },{
+      "id": "1324",
+      "name": "Vegetables"
+    },{
+      "id": "1325",
+      "name": "Meat & Poultry"
+    },{
+      "id": "1326",
+      "name": "Seafood"
+    },{
+      "id": "1327",
+      "name": "Dairy & Bread"
+    },{
+      "id": "1328",
+      "name": "Frozen Food"
+    },{
+      "id": "1329",
+      "name": "Grains & Oil"
+    },{
+      "id": "1330",
+      "name": "Household"
+    },{
+      "id": "1331",
+      "name": "Imported Food"
+    },{
+      "id": "1332",
+      "name": "Gift Boxes"
+    }],
+    "tag": ["Fruits", "Meat", "Seafood"]
+  }
+}

@@ -1,0 +1,76 @@
+{
+    "success": true,
+    "data": {
+        "location": {
+            "id": "123445",
+            "address": "Costco(Bayonne)"
+        },
+        "banners" : [
+            {
+                "id": 1,
+                "imgUrl": "https://drive.google.com/thumbnail?id=15j1H_AbnmMYvBAoC5zzkIOjtFpgIuGz8"
+            },
+            {
+                "id": 2,
+                "imgUrl": "https://drive.google.com/thumbnail?id=1idpYP3PZxrButGOP6z1op1U6oc2RfUq1"
+            },{
+                "id": 3,
+                "imgUrl": "https://drive.google.com/thumbnail?id=1L2GzHLxCB_sl-JJv8eGQm5ufxztPChZr"
+            }
+        ],
+        "categories": [{
+            "id": "113231",
+            "name": "Fresh Veggies",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-1.png"
+          },{
+            "id": "113232",
+            "name": "Fresh Meat",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-2.png"
+          },{
+            "id": "113233",
+            "name": "Fresh Fruit",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-3.png"
+          },{
+            "id": "113234",
+            "name": "Dairy & Bakery",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-4.png"
+          },{
+            "id": "113235",
+            "name": "Grains & Instant",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-5.png"
+          },{
+            "id": "113236",
+            "name": "Snacks",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-6.png"
+          },{
+            "id": "113237",
+            "name": "Household",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-7.png"
+          },{
+            "id": "113238",
+            "name": "Beauty & Care",
+            "imgUrl": "http://statics.dell-lee.com/shopping/category-8.png"
+          }],
+          "freshes": [{
+            "id": "1132381",
+            "name": "Swift Pork Belly, Boneless Skinless",
+            "imgUrl": "http://statics.dell-lee.com/shopping/fresh-1.png",
+            "price": "66.9"
+          },{
+            "id": "1132382",
+            "name": "Fresh Wild Caught Live Lobsters",
+            "imgUrl": "http://statics.dell-lee.com/shopping/fresh-2.png",
+            "price": "98"
+          },{
+            "id": "1132383",
+            "name": "Russian Imported Prime Grade Grain-Fed",
+            "imgUrl": "http://statics.dell-lee.com/shopping/fresh-3.png",
+            "price": "378"
+          },{
+            "id": "1132384",
+            "name": "Frozen Squid Heads, Frozen Squid Tentacles (400g)",
+            "imgUrl": "http://statics.dell-lee.com/shopping/fresh-4.png",
+            "price": "39"
+          }]
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "success": true,
+    "data": [{
+      "shopId": "8137",
+      "shopName": "Ximei Vegetable Shop",
+      "cartList": [{
+        "productId": "88391",
+        "imgUrl": "http://statics.dell-lee.com/shopping/category-list-1.png",
+        "weight": "0.45kg",
+        "title": "Weifang Fruit Radish 10 lbs, Sweet and Crisp Fruit-type Radish from Qingyun County, Tianshu...",
+        "price": 14.9,
+        "count": 2
+      }, {
+        "productId": "88392",
+        "imgUrl": "http://statics.dell-lee.com/shopping/category-list-2.png",
+        "weight": "0.45kg",
+        "title": "City Kitchen Australian Beef Rolls 450g, Beef Slices for Hotpot, Fresh Beef and Lamb Ingredients...",
+        "price": 35,
+        "count": 3
+      }]
+    }, {
+      "shopId": "8138",
+      "shopName": "Youguo Shopping",
+      "cartList": [{
+        "productId": "88393",
+        "imgUrl": "http://statics.dell-lee.com/shopping/category-list-3.png",
+        "weight": "0.9kg",
+        "title": "Pinzhen Fresh Fish, Cleaned and Gutted Red Grouper, Rainbow Snapper, Red Tilapia, Net Weight 900g...",
+        "price": 69.9,
+        "count": 2
+      }, {
+        "productId": "88394",
+        "imgUrl": "http://statics.dell-lee.com/shopping/category-list-2.png",
+        "weight": "1.5kg",
+        "title": "Ximei Domestic Large Shrimp, Net Weight 1.8kg, 90-108 pieces/box, Prawns for BBQ, Hotpot, Fresh Seafood...",
+        "price": 119,
+        "count": 3
+      }]
+    }]
+  }
+  

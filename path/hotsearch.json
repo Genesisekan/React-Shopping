@@ -1,0 +1,24 @@
+{
+    "success": true,
+    "data": [{
+        "id" : "8839",
+        "name" : "Summer Berries" 
+    },
+    {
+        "id" : "8840",
+        "name" : "Fruit Infused Cocktails" 
+    },
+    {
+        "id" : "8841",
+        "name" : "Grilling Produce" 
+    },{
+        "id" : "8842",
+        "name" : "Quick & Easy Sides" 
+    },{
+        "id" : "8843",
+        "name" : "Back To School" 
+    },{
+        "id" : "8844",
+        "name" : "College Essentials" 
+    }]
+}
