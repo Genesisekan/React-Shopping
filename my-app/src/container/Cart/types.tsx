@@ -1,12 +1,33 @@
 export type ResponseType = {
     success: boolean;
-    data: Array<{
-        id: string;
-        name: string;
-        openHours: string;
-        address: string;
-        distance: string;
-        latitude: string;
-        longitude: string;
-    }>;
+    data: Array<ListItemType>;
+}
+
+export type ListItemType = {
+    shopId: string;
+    shopName: string;
+    selected ?: boolean;
+    cartList: Array<CartItemType>;
+}
+
+export type CartItemType = {
+    productId: string;
+    imgUrl: string;
+    weight: string;
+    title: string;
+    price: number;
+    count: number;
+    selected ?: boolean;
+}
+
+export type CartSubmitArray = Array<{
+    productId: string;
+    count: number;
+}>
+
+export type submitRequestType = {
+    success: boolean;
+    data: {
+        orderId: string;
+    }
 }

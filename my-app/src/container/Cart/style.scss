@@ -25,6 +25,10 @@
         height: .24rem;
         border-radius: .12rem;
         border: .01rem solid #B1B1B1;
+        &-active {
+            background: #73D13D;
+            border: none;
+        }
     }
     .shop {
         margin-top: .1rem;
