@@ -53,6 +53,7 @@ Here are some screenshots of the application that highlight its main features:
 
 - **Cart Page**:
   ![Cart Page](./path/CartPage.png)
+*The Cart Page allows users to review items in their cart, adjust quantities, and proceed to checkout.*
 
 - **Category Page**:
   ![Category Page](./path/CategoryPage.png)
