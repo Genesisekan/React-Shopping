@@ -51,21 +51,39 @@ The React Shopping Application is a dynamic and responsive e-commerce platform d
 
 Here are some screenshots of the application that highlight its main features:
 
-- **Cart Page**:
-  ![Cart Page](./path/CartPage.png)
+### Cart Page
+<img src="./path/CartPage.png" alt="Cart Page" width="300"/>
+
 *The Cart Page allows users to review items in their cart, adjust quantities, and proceed to checkout.*
 
-- **Category Page**:
-  ![Category Page](./path/CategoryPage.png)
+<br>
 
-- **Home Page**:
-  ![Home Page](./path/HomePage.png)
+### Category Page
+<img src="./path/CategoryPage.png" alt="Category Page" width="300"/>
 
-- **Product Details Page**:
-  ![Product Details Page](./path/ProductPage.png)
+*The Category Page lists all available products, categorized for easy browsing.*
 
-- **Sign-Up Page**:
-  ![Sign-Up Page](./path/SignUpPage.png)
+<br>
+
+### Home Page
+<img src="./path/HomePage.png" alt="Home Page" width="300"/>
+
+*The Home Page showcases featured products and categories, offering a quick navigation to different sections of the store.*
+
+<br>
+
+### Product Details Page
+<img src="./path/ProductPage.png" alt="Product Details Page" width="300"/>
+
+*Detailed view of a selected product, showing price, description, and an option to add to the cart.*
+
+<br>
+
+### Sign-Up Page
+<img src="./path/SignUpPage.png" alt="Sign-Up Page" width="300"/>
+
+*The Sign-Up Page where users can create a new account by providing necessary details.*
+
 
 ---
 
